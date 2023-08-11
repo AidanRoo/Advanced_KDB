@@ -1,4 +1,4 @@
-##kdb+ Tickerplant Runbook 
+## kdb+ Tickerplant Runbook 
 
 #Section 1
 The key processes (q1-4) of the tickerplant can be started by running:
