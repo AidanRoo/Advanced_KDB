@@ -2,7 +2,7 @@
 #Load in Config values
 source config.sh
 
-# first lets start with the TP
+# first lets start with the TICKERPLANT
 read -ep "Do you wish to start the tickerplant (Y\N)? " -i "Y" startTp;
 	# If Y, then start up the tickerplant
 if [[ $startTp == "Y" ]]; then
