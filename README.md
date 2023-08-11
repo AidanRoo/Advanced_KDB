@@ -12,29 +12,40 @@ $Advanced_KDB/scripts/stop.sh
 
 
 You can manually run the same processes in turn by opening a terminal for each process and following the below section, but this ensure to set the Advanced_KDB and tpPort variables: 
+```
 export Advanced_KDB="$(dirname pwd)" && export tpPort=5010
+```
 
 1) To start tickerplant
+```
 export Advanced_KDB="$(dirname pwd)" && export tpPort=5010
 q $Advanced_KDB/tick.q sym . -p $tpPort
+```
 
 *Please ensure there is a space character between the period and port flag otherwise the sym file will be written to a -p directory.
 *Otherwise the latter commands will not work as expected 
 
 2) To start RDBs
+```
 export Advanced_KDB="$(dirname pwd)" && export tpPort=5010
-q $Advanced_KDB/tick/rdbTAQ.q localhost:$tpPort -p 5013
+q $Advanced_KDB/tick/rdbTAQ.q localhost:$tpPort -p 5013```
 
+```
 export Advanced_KDB="$(dirname pwd)" && export tpPort=5010
 q $Advanced_KDB/tick/rdbAgg.q localhost:$tpPort -p 5014
+```
 
 3)To start feedhandler 
+```
 export Advanced_KDB="$(dirname pwd)" && export tpPort=5010
 q $Advanced_KDB/tick/feed.q -p 5015
+```
 
 4) To start CEP:
+```
 export Advanced_KDB="$(dirname pwd)" && export tpPort=5010
 q $Advanced_KDB/tick/cep.q localhost:$tpPort -p 5016
+```
 
 5) Logging script found in 
 Advanced_KDB/logging.q
@@ -43,17 +54,25 @@ Correspondent logs can be found in /log directory
 
 The below is not automated by the scripts, you will have to manually run each:
 7) To run log replay 
+```
 q logReplay.q sym<date>
+```
 
 8) To run the CSV ingestion process
+```
 q ingestCsv.q :5010 -p 5018 -tab trade -csv /home/arooney1_kx_com/Advanced_KDB/trade.csv
+```
 
 You will know this is successful by opening and connection to TAQ RDB and searching for a specific symbol found only in the csv:
+```
 q)h:hopen 5013
 q)h"select from trade where sym=`KX"
+```
 
 9) To run EOD 
+```
 q tick/eod.q sym<date>
+```
 
 # Section 2
 Has been emailed to marker, but can also be found:
@@ -66,26 +85,30 @@ The Python API leverages PyKX to make the connection to the tickerplant.
 
 To run the API:
 Make sure the relevant processes are up; tickerplant and TAQ RDB
-cd into the API directory: /home/arooney1_kx_com/Advanced_KDB/API
+cd into the API directory:
+```
+cd /home/arooney1_kx_com/Advanced_KDB/API
 python csvIngest.py
-
+```
 This will push 10 rows of trade data to the tickerplant from a file named pytrade.csv.
-You can sanity check the records have been opened by:
-- Opening a q terminal
-- h:hopen 5013
-- h"select from trade where sym=`PYTH"
-
+You can sanity check the records have been opened by Opening a q terminal and running:
+```
+h:hopen 5013
+h"select from trade where sym=`PYTH"
+```
 
 2) Java
 To run the API:
 Make sure the relevant processes are up; tickerplant and TAQ RDB
 cd into the Java directory: /home/arooney1_kx_com/Advanced_KDB/API/Java
 Then run:
+```
 javac -sourcepath "src/main/java" -d . src/main/java/fh/FeedHandler.java
 java -cp . fh.FeedHandler
-
+```
 This will push 10 rows of trade data to the tickerplant from a file named javatrade.csv.
-You can sanity check the records have been appended by:
-- Opening a q terminal
-- h:hopen 5013
-- h"select from trade where sym=`JAVA"
+You can sanity check the records have been appended by opening a q terminal and running:
+```
+h:hopen 5013
+h"select from trade where sym=`JAVA"
+```
