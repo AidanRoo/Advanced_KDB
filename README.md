@@ -30,7 +30,7 @@ q $Advanced_KDB/tick.q sym . -p $tpPort
 export Advanced_KDB="$(dirname pwd)" && export tpPort=5010
 q $Advanced_KDB/tick/rdbTAQ.q localhost:$tpPort -p 5013```
 
-```
+
 export Advanced_KDB="$(dirname pwd)" && export tpPort=5010
 q $Advanced_KDB/tick/rdbAgg.q localhost:$tpPort -p 5014
 ```
