@@ -1,6 +1,6 @@
 ## kdb+ Tickerplant Runbook 
 
-#Section 1
+# Section 1
 The key processes (q1-4) of the tickerplant can be started by running:
 $Advanced_KDB/scripts/start.sh
 
@@ -55,19 +55,11 @@ q)h"select from trade where sym=`KX"
 9) To run EOD 
 q tick/eod.q sym<date>
 
-10)Has been emailed to marker, but can also be found at: 
-https://fdplc-my.sharepoint.com/:w:/g/personal/arooney1_firstderivatives_com/EQhruxSECEhMrL24crDywk0BunE4yBpEO7iohEp1i_ufLw?CID=35b2b982-9797-ff99-737e-a83f42aa3068
-Please contact me if access is required
-
-_________________________________________
-****************Section 2****************
-_________________________________________
+# Section 2
 Has been emailed to marker, but can also be found:
 https://fdplc-my.sharepoint.com/:w:/g/personal/arooney1_firstderivatives_com/EQhruxSECEhMrL24crDywk0BunE4yBpEO7iohEp1i_ufLw?CID=35b2b982-9797-ff99-737e-a83f42aa3068
 
-_________________________________________
-****************Section 3****************
-_________________________________________
+# Section 3
 
 1) Python
 The Python API leverages PyKX to make the connection to the tickerplant. 
@@ -81,7 +73,9 @@ This will push 10 rows of trade data to the tickerplant from a file named pytrad
 You can sanity check the records have been opened by:
 - Opening a q terminal
 - h:hopen 5013
-- h"select from trade where sym=`PY"
+- h"select from trade where sym=`PYTH"
+
+
 2) Java
 To run the API:
 Make sure the relevant processes are up; tickerplant and TAQ RDB
@@ -94,4 +88,4 @@ This will push 10 rows of trade data to the tickerplant from a file named javatr
 You can sanity check the records have been appended by:
 - Opening a q terminal
 - h:hopen 5013
-- h"select from trade where sym=`JAVA" 
+- h"select from trade where sym=`JAVA"
