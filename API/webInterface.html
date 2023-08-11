@@ -1,0 +1,13 @@
+<html><body><title>Web Interface</title>
+    <div style="text-align:center;width: 60%;height: 250px;margin: 0 auto;border-style: solid;">
+    <H1 style="font-family:verdana;color:white"><u><b></b>Aidan's Web Interface</b></u></H1>
+    <body style="background-color:mediumseagreen">
+        <p style="font-family:verdana;color:white">Which symbol would you like to  query for?:</p> <input type="text" id="sym" value="IBM.N"><br>
+        <button onclick="query()">Run Query</button>
+        <script>
+            function query() {
+              sym = tableValue=document.getElementById('sym').value;
+              window.open('http:localhost:5013/?select from trade where sym=`' + sym, "width=200, height=100")
+            }
+          </script>
+    </body></div></body></html>
